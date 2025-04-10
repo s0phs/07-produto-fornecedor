@@ -30,7 +30,7 @@ public class Util {
                     pesquisarProduto();
                     break;
                 case 3:
-                    pesquisarFornecedor();
+                    pesquisar();
                     break;
                 case 4:
                     return;//para parar um método e retornar para o Main
@@ -64,7 +64,7 @@ public class Util {
             if (produto[i].getNome().equalsIgnoreCase(nome)) {
                 aux = "";
                 aux += "Nome do produto: " + nome + "\n";
-                aux += "Valor unitário: " + produto[i].getValor() + "\n";
+                aux += "Valor unitário: R$" + produto[i].getValor() + "\n";
                 aux += "Fornecedor: " + produto[i].getFornecedor().getNome() + "\n";
             }
 
@@ -81,6 +81,17 @@ public class Util {
         }
         showMessageDialog(null, "CNPJ não cadastrado");
         return null;
+    }
+
+    private void pesquisar(){
+        String aux = "";
+        Fornecedor fornecedor =  pesquisarFornecedor();
+        if(fornecedor != null){
+            aux += "Fornecedor: " + fornecedor.getNome() + "\n";
+            aux += "CNPJ: " + fornecedor.getCnpj() + "\n";
+            showMessageDialog(null,aux);
+        }
+
     }
 
     private Fornecedor cadastraFornecedor(){
